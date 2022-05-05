@@ -1,0 +1,101 @@
+{
+	"info": {
+		"_postman_id": "1fdf5f8a-3e81-41c6-954e-082195b4546c",
+		"name": "BNZTests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://jsonplaceholder.typicode.com/users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Verify 200 OK message is returned\", function() {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify length\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.lengthOf(10);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify if user with id8 is Nicholas Runolfsdottir V\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData[7].name).to.eql(\"Nicholas Runolfsdottir V\");\r",
+							"    pm.response.to.have.status(200)\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/users",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://jsonplaceholder.typicode.com/users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Verify 200 OK message is returned\", function() {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify ID\", function() {\r",
+							"    const jsonData = pm.response.json();\r",
+							"     pm.expect(jsonData[0].name).to.eql(\"Mithilesh Sawanth\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n   {\r\n      \"id\":11,\r\n      \"name\":\"Mithilesh Sawanth\",\r\n      \"username\":\"Mith\",\r\n      \"email\":\"Mithilesh@mutant.biz\",\r\n      \"address\":{\r\n         \"street\":\"Bat Street\",\r\n         \"suite\":\"666\",\r\n         \"city\":\"Gotham\",\r\n         \"zipcode\":\"92248-3813\",\r\n         \"geo\":{\r\n            \"lat\":\"-37.3159\",\r\n            \"lng\":\"81.1496\"\r\n         }\r\n      },\r\n      \"phone\":\"1-770-736-8031 x56442\",\r\n      \"website\":\"hildegard.org\",\r\n      \"company\":{\r\n         \"name\":\"Romaguera-Crona\",\r\n         \"catchPhrase\":\"Multi-layered client-server neural-net\",\r\n         \"bs\":\"harness real-time e-markets\"\r\n      }\r\n   }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/users",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
